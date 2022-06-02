@@ -7,7 +7,7 @@ import HomeStack from "../navigations/HomeStack";
 
 const Main = () => {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.sura);
+  const { loading, error } = useSelector((state) => state.sura);
 
   const [appIsReady, setAppIsReady] = useState(false);
 
@@ -21,7 +21,7 @@ const Main = () => {
 
   useEffect(() => {
     if (appIsReady) {
-      if (!loading) {
+      if (!loading && !error) {
         hide();
       }
     }

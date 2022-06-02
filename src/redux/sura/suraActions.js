@@ -6,6 +6,7 @@ import {
   FILTER_SURA,
   SEARCH_SURA,
 } from "./suraTypes";
+import data from "../../data/data.json";
 
 export const fetchSuraRequest = () => {
   return {
@@ -31,10 +32,7 @@ const fetchSuraInitiate = () => {
   return async (dispatch) => {
     try {
       dispatch(fetchSuraRequest());
-      const res = await axios.get(
-        "https://raw.githubusercontent.com/rimonians/al-quran/main/public/data/data.json"
-      );
-      dispatch(fetchSuraSuccess(res.data));
+      dispatch(fetchSuraSuccess(data));
     } catch (err) {
       dispatch(fetchSuraFailure(err));
     }
